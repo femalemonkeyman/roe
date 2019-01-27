@@ -4,9 +4,9 @@ block_cipher = None
 
 
 a = Analysis(['main.py'],
-             pathex=['C:\\Users\\Femalemonkeyman\\Desktop\\game'],
+             pathex=['C:\\Users\\Femalemonkeyman\\Desktop\\roe'],
              binaries=[],
-             datas=[("opening.mp3", "opening.mp3")],
+             datas=[],
              hiddenimports=[],
              hookspath=[],
              runtime_hooks=[],
