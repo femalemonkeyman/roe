@@ -67,6 +67,7 @@ def look():
 	for x in rooms[room]["exits"]:
 		print(x + ", ", end = "")
 
+inventory = [""]
 def clear():
 	if (os.name == "posix"):
 		os.system('clear')
@@ -141,6 +142,11 @@ while(gameEnd == False):
 		look()
 	elif (a == help):
 		print("Type \"look\" to look around and find things\nType \"go [exit name]\" to move through that exit\nType \"help\" for this output\nType \"get [item name]\" to pickup that item")
+	elif (a == get):
+		clear()
+		a = a[4:]
+		if a in rooms[room]["items"]:
+			print
 	elif ("go" in a):
 		clear()
 		a = a[3:]
