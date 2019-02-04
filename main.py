@@ -59,15 +59,13 @@ rooms = {
 }
 room = "opening"
 def look():
+	clear()
 	print(rooms[room]["description"])
-	print("\nitems : ", end = "")
-	for x in rooms[room]["items"]:
-		print(x + ", ", end = "")
-	print("\nexits : ", end = "")
-	for x in rooms[room]["exits"]:
-		print(x + ", ", end = "")
+	print("\nitems : " + ", ".join(str(i) for i in rooms[room]["items"]), end = "")
+	print("\nexits : " + ", ".join(str(i) for i in rooms[room]["exits"]), end = "")
 
-inventory = [""]
+inventory = []
+get = 0
 def clear():
 	if (os.name == "posix"):
 		os.system('clear')
@@ -80,9 +78,6 @@ def music():
 	pygame.mixer.music.play(-1)
 def go(a, room):
 	a = a.strip("go ")
-	a = "\"" + a + "\""
-	print(a)
-	room = str(rooms[room]["exits"]["window"])
 	print(rooms[room]["exits"]["window"])
 	if a in rooms[room]["exits"]:
 		room = (rooms[room]["exits"][a])
@@ -141,12 +136,16 @@ while(gameEnd == False):
 	elif (a == look):
 		look()
 	elif (a == help):
-		print("Type \"look\" to look around and find things\nType \"go [exit name]\" to move through that exit\nType \"help\" for this output\nType \"get [item name]\" to pickup that item")
-	elif (a == get):
+		print("Type \"look\" to look around and find things\nType \"go [exit name]\" to move through that exit\nType \"help\" for this output\nType \"get [item name]\" to pickup that item\nType \"inventory\" to list the items you have")
+	elif ("get" in a):
 		clear()
 		a = a[4:]
 		if a in rooms[room]["items"]:
-			print
+			inventory.insert(get, str(a))
+			get += 1
+			print("\nYou picked up " + a)
+			rooms[room]["items"].remove(a)
+			enter()
 	elif ("go" in a):
 		clear()
 		a = a[3:]
@@ -157,6 +156,10 @@ while(gameEnd == False):
 				enter()
 			room = (rooms[room]["exits"][a])
 			clear()
+	elif (a == "inventory"):
+		print("\n", end = "")
+		print(", ".join(str(i) for i in inventory))
+		enter()
 # a = str(rooms["tavern"]["exits"])
 # b = re.sub('[{}""\':\[\]]',"", a)
 # c = input()
