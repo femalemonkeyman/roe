@@ -109,13 +109,15 @@ while(True):
 	a = input("\n\n As your vision clears you find yourself standing in a dull grey room. In front of you floats a dazzlingly white orb. You can't understand how, but it almost seems to be beckoning to you. What will you do? \n\n" + name + " : ")
 	a = a.lower()
 	print(a)
-	if ("dont" in a and "go" in a):
+	if ("dont" in a and "go" in a or "don't" in a and "go" in a):
 		print("Are you just going to stand there? That isn't very productive...")
 	elif ("touch" in a and "orb" in a or "touch" in a):
 		clear()
 		print("You slowly reach out. The second your hand touches the orb everything goes dark... and then light! You are standing in a noisy tavern!")
 		enter()
 		break
+	elif ("touch" in a):
+		print("Touch... what?")
 	else:
 		print("I'm sorry I don't understand")
 		enter()
@@ -133,10 +135,11 @@ while(gameEnd == False):
 	a = input("\n\n" + name + " : ")
 	if (a == "quit"):
 		gameEnd == True
-	elif (a == look):
+	elif (a == "look"):
 		look()
-	elif (a == help):
+	elif (a == "help"):
 		print("Type \"look\" to look around and find things\nType \"go [exit name]\" to move through that exit\nType \"help\" for this output\nType \"get [item name]\" to pickup that item\nType \"inventory\" to list the items you have")
+		enter()
 	elif ("get" in a):
 		clear()
 		a = a[4:]
