@@ -1,0 +1,17 @@
+name: roe_server
+description: An new Dart Frog application
+version: 1.0.0+1
+publish_to: none
+
+environment:
+  sdk: ">=2.19.0 <3.0.0"
+
+dependencies:
+  dart_frog: ^0.3.6
+  dart_frog_web_socket:
+  isar: 
+
+dev_dependencies:
+  lints:
+  isar_generator:
+  build_runner:
