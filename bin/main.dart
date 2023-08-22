@@ -2,9 +2,9 @@ import 'dart:io';
 import 'dart:isolate';
 
 import 'package:hotreloader/hotreloader.dart';
-import 'package:roe_server/src/login.dart';
+import 'package:roe_server/login.dart';
 
-void main() async {
+Future<void> main(List<String> args) async {
   final HotReloader reloader = await HotReloader.create();
   for (var i = 1; i < 12; i++) {
     await Isolate.spawn(
