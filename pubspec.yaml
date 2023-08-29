@@ -4,14 +4,15 @@ version: 1.0.0+1
 publish_to: none
 
 environment:
-  sdk: ">=2.19.0 <3.0.0"
+  sdk: ">3.0.0 <4.0.0"
 
 dependencies:
-  isar:
-  crypto: 
+  isar: ^4.0.0-dev.14
+  bcrypt: 
+  uuid: 
 
 dev_dependencies:
   lints:
-  isar_generator:
+  analyzer: 
   build_runner:
   hotreloader: ^3.0.6
